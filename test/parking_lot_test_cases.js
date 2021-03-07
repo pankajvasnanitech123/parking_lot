@@ -1,7 +1,7 @@
 let expect = require('chai').expect;
 let parkingLot = require('.././parking_lot');
 
-// Test for creating the parking lot with 6 slots 
+// Test for creating the parking lot with n slots 
 describe('create parking lot with n slots', function () {
     it('should create parking lot with n slots', function () {
       var size = 4;
