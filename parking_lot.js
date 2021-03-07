@@ -95,15 +95,20 @@ let carLeave = (carNo, noOfHours) => {
 }
 
 let parkingSlotStatus = () => {
-    console.log("Slot No. Registration No.");
+    try {
+        console.log("Slot No. Registration No.");
 
-    parkedCars.sort(function(a, b) {
-        return a.slot - b.slot;
-    });
+        parkedCars.sort(function(a, b) {
+            return a.slot - b.slot;
+        });
 
-    parkedCars.forEach(function(row) {
-        console.log(`${row.slot}          ${row.car_no}`);
-    });
+        parkedCars.forEach(function(row) {
+            console.log(row);
+            console.log(`${row.slot}          ${row.car_no}`);
+        });
+    } catch(e) {
+        return "There seems to be an error in the method.";
+    }
 }
 
 module.exports = {
