@@ -2,7 +2,7 @@ let parkedCars = [];
 let availableParkingLots = [];
 let maxSize = 0;
 
-let createParkingLot = async (size) => {
+let createParkingLot = (size) => {
     try {
         maxSize = parseInt(size);
 
@@ -16,7 +16,7 @@ let createParkingLot = async (size) => {
     }
 }
 
-let parkCar = async (carNo) => {
+let parkCar = (carNo) => {
     try {
         if(maxSize === 0) {
             return "Parking lot is not created.";
@@ -39,8 +39,8 @@ let parkCar = async (carNo) => {
     }
 }
 
-let carLeave = async (carNo, noOfHours) => {
-    // try {
+let carLeave = (carNo, noOfHours) => {
+    try {
         if(maxSize === 0) {
             return "Parking lot is not created.";
         }
@@ -89,13 +89,18 @@ let carLeave = async (carNo, noOfHours) => {
         } else {
             return "Car is not alloted the parking slot."
         }
-    // } catch(e) {
-    //     return "Invalid parameters to create the method for car leave.";
-    // }
+    } catch(e) {
+        return "Invalid parameters to create the method for car leave.";
+    }
 }
 
 let parkingSlotStatus = () => {
     console.log("Slot No. Registration No.");
+
+    parkedCars.sort(function(a, b) {
+        return a.slot - b.slot;
+    });
+
     parkedCars.forEach(function(row) {
         console.log(`${row.slot}          ${row.car_no}`);
     });

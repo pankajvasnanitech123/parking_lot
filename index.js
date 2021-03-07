@@ -14,14 +14,14 @@ const file = readline.createInterface({
  * Parser for the commands from the file
  */
 let parkingLotExec = () => {
-    file.on('line', async (input) => {
+    file.on('line', (input) => {
         input = input.split(" ");
         
         switch (input[0]) {
             case ('create_parking_lot'):
 
                 try {
-                    const result = await parkingLotInstance.createParkingLot(input[1]);
+                    const result = parkingLotInstance.createParkingLot(input[1]);
                     console.log(result);
                 } catch (e) {
                     console.log(`error occured ==> ${e}`);
@@ -29,9 +29,8 @@ let parkingLotExec = () => {
                 break;
 
             case ('park'):
-               // console.log("input", input);
                 try {
-                    const result = await parkingLotInstance.parkCar(input[1].trim());
+                    const result = parkingLotInstance.parkCar(input[1].trim());
                     console.log(result);
                 } catch (e) {
                     console.log(`error occured ==> ${e}`);
@@ -41,7 +40,7 @@ let parkingLotExec = () => {
             case ('leave'):
 
                 try {
-                    const result = await parkingLotInstance.carLeave(input[1], parseInt(input[2]));
+                    const result = parkingLotInstance.carLeave(input[1], parseInt(input[2]));
                     console.log(result);
 
                 } catch (e) {
@@ -51,9 +50,8 @@ let parkingLotExec = () => {
 
 
             case ('status'):
-
                 try {
-                    const result = await parkingLotInstance.parkingSlotStatus();
+                    const result = parkingLotInstance.parkingSlotStatus();
                     console.log(result);
 
                 } catch (e) {
@@ -61,21 +59,11 @@ let parkingLotExec = () => {
                 }
                 break;
 
-            case ('exit'):
-                rl.pause();
-                break;
-
             default:
-                console.log('Seems like an issue with command that you typed , please note predeifed commands are case sensitive and matched as per the description!');
+                console.log('There seems to be an issue with the input command in the file.');
         }
 
     });
 }
-
-// rl.on('SIGINT', () => {
-//     rl.question('Are you sure you want to exit? (yes/no) ', (answer) => {
-//         if (answer.match(/^y(es)?$/i)) rl.pause();
-//     });
-// }); 
  
 parkingLotExec();
