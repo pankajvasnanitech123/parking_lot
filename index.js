@@ -1,17 +1,22 @@
-#!/usr/bin/env node
+const fs = require('fs'); 
 const readline = require('readline');
-const parkingLotInstance = require('./parking_lot')
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
+const parkingLotInstance = require('./parking_lot');
+
+var myArgs = process.argv.slice(2);
+
+const file = readline.createInterface({
+    input: fs.createReadStream(myArgs[0]),
+    output: process.stdout,
+    terminal: false
 });
 
 /**
- * Parser for the commands that user input
+ * Parser for the commands from the file
  */
-let intiMain = () => {
-    rl.on('line', async (input) => {
+let parkingLotExec = () => {
+    file.on('line', async (input) => {
         input = input.split(" ");
+        
         switch (input[0]) {
             case ('create_parking_lot'):
 
@@ -67,10 +72,10 @@ let intiMain = () => {
     });
 }
 
-rl.on('SIGINT', () => {
-    rl.question('Are you sure you want to exit? (yes/no) ', (answer) => {
-        if (answer.match(/^y(es)?$/i)) rl.pause();
-    });
-}); 
+// rl.on('SIGINT', () => {
+//     rl.question('Are you sure you want to exit? (yes/no) ', (answer) => {
+//         if (answer.match(/^y(es)?$/i)) rl.pause();
+//     });
+// }); 
  
-intiMain();
+parkingLotExec();
