@@ -1,0 +1,11 @@
+{
+  "name": "parkinglotproblem",
+  "version": "1.0.0",
+  "description": "This is a simple package to address the parking lot problem using Nodejs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pankaj Ramesh Vasnani",
+  "license": "ISC"
+}
