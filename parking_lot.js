@@ -2,6 +2,7 @@ let parkedCars = [];
 let availableParkingLots = [];
 let maxSize = 0;
 
+// Function to create the parking lot with n slots
 let createParkingLot = (size) => {
     try {
         maxSize = parseInt(size);
@@ -16,6 +17,7 @@ let createParkingLot = (size) => {
     }
 }
 
+// Function to park the car
 let parkCar = (carNo) => {
     try {
         if(maxSize === 0) {
@@ -39,6 +41,7 @@ let parkCar = (carNo) => {
     }
 }
 
+// Function for car leave and calculate the parking charges
 let carLeave = (carNo, noOfHours) => {
     try {
         if(maxSize === 0) {
@@ -94,6 +97,7 @@ let carLeave = (carNo, noOfHours) => {
     }
 }
 
+// Function to show the cars along with their alloted slots in the parking lot
 let parkingSlotStatus = () => {
     try {
         console.log("Slot No. Registration No.");
@@ -103,7 +107,6 @@ let parkingSlotStatus = () => {
         });
 
         parkedCars.forEach(function(row) {
-            console.log(row);
             console.log(`${row.slot}          ${row.car_no}`);
         });
     } catch(e) {

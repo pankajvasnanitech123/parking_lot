@@ -6,8 +6,7 @@ var myArgs = process.argv.slice(2);
 
 const file = readline.createInterface({
     input: fs.createReadStream(myArgs[0]),
-    output: process.stdout,
-    terminal: false
+    output: process.stdout
 });
 
 /**
@@ -19,7 +18,6 @@ let parkingLotExec = () => {
         
         switch (input[0]) {
             case ('create_parking_lot'):
-
                 try {
                     const result = parkingLotInstance.createParkingLot(input[1]);
                     console.log(result);
